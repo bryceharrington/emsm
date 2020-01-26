@@ -726,6 +726,26 @@ class Vanilla_1_14(VanillaBase):
         return re.compile(".* \[SEVERE\] .*", re.MULTILINE)
 
 
+class Vanilla_1_15(VanillaBase):
+
+    @classmethod
+    def name(self):
+        return "vanilla 1.15"
+
+    def default_url(self):
+        # 1.15.2
+        return "https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar"
+
+    def log_path(self):
+        return "./logs/latest.log"
+
+    def log_start_re(self):
+        return re.compile("^.*Starting minecraft server version 1\.15.*")
+
+    def log_error_re(self):
+        return re.compile(".* \[SEVERE\] .*", re.MULTILINE)
+
+
 # MinecraftForge
 # ''''''''''''''
 
@@ -1235,6 +1255,13 @@ class Spigot_1_14(SpigotBase):
         return "1.14"
 
 
+class Spigot_1_15(SpigotBase):
+
+    @classmethod
+    def revision(cls):
+        return "1.15"
+
+
 # MC-Server
 # '''''''''
 
@@ -1284,6 +1311,7 @@ class ServerManager(object):
             Vanilla_1_12,
             Vanilla_1_13,
             Vanilla_1_14,
+            Vanilla_1_15,
             MinecraftForge_1_6,
             MinecraftForge_1_7,
             MinecraftForge_1_8,
@@ -1300,7 +1328,8 @@ class ServerManager(object):
             Spigot_1_11,
             Spigot_1_12,
             Spigot_1_13,
-            Spigot_1_14
+            Spigot_1_14,
+            Spigot_1_15
             ]
 
         for wrapper in wrappers:
